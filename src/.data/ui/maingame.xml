@@ -35,15 +35,16 @@
 	<static_weapon x="860" y="692" width="157" height="65">
 		<text complex_mode="0" x="40" y="0" font="letterica16" r="255" g="255" b="255" a="130"/>
 		<texture>ui_hud_frame_patron</texture>
+
+		<static_ammo x="75" y="22" width="70" height="30">
+			<text align="c" complex_mode="0" font="graffiti32" r="238" g="155" b="23" a="255">Ammo</text>
+		</static_ammo>
+
+		<static_wpn_icon x="0" y="13" width="80" height="42">
+			<text font="graffiti19" r="239" g="154" b="29" a="230"/>
+		</static_wpn_icon>
+		
 	</static_weapon>
-	
-	<static_ammo x="75" y="22" width="70" height="30">
-		<text align="c" complex_mode="0" font="graffiti32" r="238" g="155" b="23" a="255">Ammo</text>
-	</static_ammo>
-	
-	<static_wpn_icon x="0" y="13" width="80" height="42">
-		<text font="graffiti19" r="239" g="154" b="29" a="230"/>
-	</static_wpn_icon>
 
 	<car_panel x="860" y="584" width="150" height="200"/>
 	
