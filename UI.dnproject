@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project author="drogo" authorOS="Windows 10" createdAt="1794904492766" ideName="DevelNext" ideVersion="16.7.0" ideVersionHash="2017103112" name="UI" packageName="app" template="ide\project\templates\DefaultGuiProjectTemplate" updatedAt="1794910947601">
+  <tree>
+    <expanded>
+    <path src=""/>
+      <path src="/src"/>
+      <path src="/src/.data"/>
+      <path src="/src/.data/textures"/>
+      <path src="/src/.data/textures/ui"/>
+      <path src="/src/.theme"/>
+      <path src="/src/app"/>
+      <path src="/src/app/classes"/>
+      <path src="/userdata"/>
+    </expanded>
+  </tree>
+  <openedFiles>
+  <file selected="1" src="UI.dnproject"/>
+    <file src="src/app/modules/MainModule.php"/>
+    <file src="src/app/forms/MainForm.php"/>
+    <file src="src/app/classes/DMTextureCapture.php"/>
+    <file src="src/app/classes/DMTextureManager.php"/>
+    <file src="src/app/classes/DMDDSLoader.php"/>
+  </openedFiles>
+  <files/>
+  <behaviours>
+  <behaviour class="ide\project\behaviours\BundleProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\PhpProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\JavaPlatformBehaviour"/>
+    <behaviour class="ide\project\behaviours\GuiFrameworkProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\RunBuildProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\ShareProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\BackupProjectBehaviour"/>
+    <behaviour class="ide\project\behaviours\GradleProjectBehaviour"/>
+  </behaviours>
+</project>
