@@ -33,52 +33,10 @@ class DMTextureManager
 
     function Get($id)
     {
-        foreach ($this->atlases as $atlas)
-        {
-            if ($atlas->exists($id))
-            {
-                return $atlas->get($id);
-            }
-        }
-
-        if (isset($this->compositeCache[$id]))
-        {
-            return $this->compositeCache[$id];
-        }
-
-        $begin = $this->GetRaw($id . '_b');
-        $back = $this->GetRaw($id . '_back');
-        $end = $this->GetRaw($id . '_e');
-
-        if ($begin != null && $back != null && $end != null)
-        {
-            $image = $this->Compose($begin, $back, $end);
-
-            if ($image != null)
-            {
-                $this->compositeCache[$id] = $image;
-
-                Logger::info("[DMTextureManager] Composite texture: " . $id);
-
-                return $image;
-            }
-        }
-
-        $path = 'res://.data/textures/' . str_replace('\\', '/', $id) . '.png';
-
-        if (Stream::exists($path))
-        {
-            Logger::info("[DMTextureManager] Standalone texture: " . $id);
-            
-            return new UXImage($path);
-        }
-
-        Logger::warn("[DMTextureManager] Texture not found: " . $id);
-
-        return null;
+        return $this->GetRaw($id);
     }
-
-    private function GetRaw($id)
+    
+    function GetRaw($id)
     {
         foreach ($this->atlases as $atlas)
         {
@@ -87,42 +45,57 @@ class DMTextureManager
                 return $atlas->get($id);
             }
         }
-
+    
         $path = 'res://.data/textures/' . str_replace('\\', '/', $id) . '.png';
-
+    
         if (Stream::exists($path))
         {
             return new UXImage($path);
         }
-
+    
+        Logger::warn("[DMTextureManager] Texture not found: " . $id);
+    
         return null;
     }
-
+    
+    function Has($id)
+    {
+        foreach ($this->atlases as $atlas)
+        {
+            if ($atlas->exists($id))
+            {
+                return true;
+            }
+        }
+    
+        return false;
+    }   
+    
     private function Compose($begin, $back, $end)
     {
-        $width = max($begin->width, $back->width, $end->width);
-
-        $height = $begin->height + $back->height + $end->height;
-
+        $height = max($begin->height, $back->height, $end->height);
+    
+        $width = $begin->width + $back->width + $end->width;
+    
         $container = new UXAnchorPane();
         $container->size = [$width, $height];
-
+    
         $beginView = new UXImageView($begin);
         $beginView->position = [0, 0];
         $beginView->size = [$begin->width, $begin->height];
-
+    
         $backView = new UXImageView($back);
-        $backView->position = [0, $begin->height];
+        $backView->position = [$begin->width, 0];
         $backView->size = [$back->width, $back->height];
-
+    
         $endView = new UXImageView($end);
-        $endView->position = [0, $begin->height + $back->height];
+        $endView->position = [$begin->width + $back->width, 0];
         $endView->size = [$end->width, $end->height];
-
+    
         $container->add($beginView);
         $container->add($backView);
         $container->add($endView);
-
+    
         return $container->snapshot();
     }
 
